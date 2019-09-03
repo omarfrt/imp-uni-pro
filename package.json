@@ -1,0 +1,29 @@
+{
+  "name": "imp-uni-pro",
+  "version": "1.0.0",
+  "description": "impossible uni project backend 6 days left",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omarfrt/imp-uni-pro.git"
+  },
+  "author": "jlo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omarfrt/imp-uni-pro/issues"
+  },
+  "homepage": "https://github.com/omarfrt/imp-uni-pro#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.11",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
