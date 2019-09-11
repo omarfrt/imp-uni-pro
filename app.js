@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 
 const userRoutes = require('./api/routes/user');
+const uniRoutes = require('./api/routes/university');
 
 
 mongoose.connect('mongodb+srv://jlo:' + process.env.MONGO_ATLAS_PW + '@unidb-imig3.mongodb.net/test?retryWrites=true&w=majority', {
@@ -18,6 +19,7 @@ mongoose.connect('mongodb+srv://jlo:' + process.env.MONGO_ATLAS_PW + '@unidb-imi
 
 
 app.use(morgan('dev'));
+app.use('/images', express.static('images'));
 app.use(bodyParser.urlencoded({
     extended: false
   }));
@@ -37,6 +39,7 @@ app.use((req, res, next) => {
 
 app.use('/user',userRoutes);
 
+app.use('/university',uniRoutes);
 
 //handling errors
 app.use((req, res, next) => {
