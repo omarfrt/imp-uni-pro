@@ -35,11 +35,51 @@ router.post('/',(req,res,next)=>{
 
 });
 
+///////////////////////////////////////////////normal get(/) ///////////////////////////
 
 
+router.get('/',(req,res,next)=>{
+
+Uni.find()
+.select(' _id uniname uniwebsite uniphone uniaddress uniabout uniimg')
+.populate('Uni')
+.exec()
+.then(docs =>{
+  const response={
+   count:docs.length,
+    products: docs.map(doc=>{
+      return{
+        _id: doc._id,
+      uniname: doc.uniname,
+      uniwebsite: doc.uniwebsite,
+      uniphone: doc.uniphone,
+      uniaddress: doc.uniaddress,
+      uniabout: doc.uniabout,
+      uniimg: doc.uniimg,
+        request:{
+          //hna kay3tik link w methode li tdir bach tjbed
+          //gha wa7d l uni , 2000000IQ shit
+          type:'GET',
+          url:'http://localhost:6000/university/' +doc._id
+        }
+      }
+    })
+  };
+
+    res.status(200).json(response);
+  })
+  .catch(err=>{
+    console.log(err);
+    res.status(500).json({
+      error:err
+    });
+  });
+
+
+});
 
 ///////////////////////////////////////////// search pagenation/////////////////////////////////////////////
-router.get('/search/:bookName/:page',(req, res, next)=>{
+router.get('/search/:uniname/:page',(req, res, next)=>{
 
 
     const resPerPage =5;
@@ -47,11 +87,11 @@ router.get('/search/:bookName/:page',(req, res, next)=>{
   console.log(page);
     var regex = new RegExp(req.params.bookName, 'i');
     Uni.find({'uniname': regex })
-     .sort({'createdAt':-1})
+     //.sort({'createdAt':-1})
      .skip((resPerPage * page) - resPerPage)
     .limit(resPerPage)
     .select(' _id uniname uniwebsite uniphone uniaddress uniabout uniimg')
-    .populate('uni')
+    .populate('Uni')
     .exec()
     .then(docs =>{
     const response={
@@ -69,7 +109,7 @@ router.get('/search/:bookName/:page',(req, res, next)=>{
             //hna kay3tik link w methode li tdir bach tjbed
             //gha wa7d l uni , 2000000IQ shit
             type:'GET',
-            url:'http://localhost:3000/university/' +doc._id
+            url:'http://localhost:6000/university/' +doc._id
           }
         }
       })
@@ -133,7 +173,7 @@ router.get('/search/:uniname',(req, res, next)=>{
           //hna kay3tik link w methode li tdir bach tjbed
           //gha wa7d lbook , 2000000IQ shit
           type:'GET',
-          url:'http://localhost:3000/university/' +doc._id
+          url:'http://localhost:6000/university/' +doc._id
         }
       }
     })

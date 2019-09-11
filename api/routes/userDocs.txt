@@ -1,0 +1,12 @@
+					USER
+
+req : post http://localhost:3000/user
+with:	email: 
+	prenom:
+	nom:
+	country:
+	address:
+	phone: 
+
+res: message: user created!
+	and returns the user that been created!	

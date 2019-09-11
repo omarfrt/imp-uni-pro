@@ -1,0 +1,50 @@
+				UNIVERSITY 
+
+req: get http://localhost:6000/university/
+res: _id: ,
+      uniname: 
+      uniwebsite:
+      uniphone: 
+      uniaddress:
+      uniabout: 
+      uniimg: 
+
+///////////////////////// search pagenation /////////////////
+
+req: get http://localhost:6000/university/search/:uniname/:page
+
+res: 5 unis each page !!!!!!!
+	_id: ,
+      uniname: 
+      uniwebsite:
+      uniphone: 
+      uniaddress:
+      uniabout: 
+      uniimg: 
+
+
+///////////////////////// GET BY ID ///////////////////
+
+req : get http://localhost:6000/university/:uniId
+
+
+res: _id: ,
+      uniname: 
+      uniwebsite:
+      uniphone: 
+      uniaddress:
+      uniabout: 
+      uniimg: 
+
+///////////////////////// search by name ///////////////////////
+
+req: GET get http://localhost:6000/university/search/:uniname
+
+
+res: _id: ,
+      uniname: 
+      uniwebsite:
+      uniphone: 
+      uniaddress:
+      uniabout: 
+      uniimg: 
